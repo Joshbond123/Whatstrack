@@ -1,4 +1,4 @@
-import { Eye, MessageSquare, Phone, MapPin, Shield } from "lucide-react";
+import { Eye, MessageSquare, Phone, Shield } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const BG_IMAGE = "https://media.base44.com/images/public/6a2fdd6f77f22f5cf4a24501/019c82b65_generated_image.png";
@@ -6,7 +6,6 @@ const BG_IMAGE = "https://media.base44.com/images/public/6a2fdd6f77f22f5cf4a2450
 const CAPABILITY_CARDS = [
   { icon: MessageSquare, label: "Messages", value: "Full Access", sub: "All chats & deleted", color: "#00FF88" },
   { icon: Phone, label: "Calls", value: "Logged", sub: "Voice & video", color: "#60A5FA" },
-  { icon: MapPin, label: "Location", value: "Live GPS", sub: "Real-time tracking", color: "#F472B6" },
   { icon: Shield, label: "Stealth", value: "Zero Trace", sub: "Fully undetectable", color: "#A78BFA" },
 ];
 
@@ -49,56 +48,58 @@ export default function ImageSection() {
           </h2>
         </div>
 
-        {/* Capability cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px", maxWidth: "900px", margin: "0 auto" }}
-          className="image-cards">
-          {CAPABILITY_CARDS.map((card, i) => {
-            const Icon = card.icon;
-            return (
-              <div key={card.label} className={`reveal reveal-delay-${i + 1}`}>
-                <div style={{
-                  borderRadius: "20px",
-                  border: `1px solid ${card.color}20`,
-                  background: "rgba(11,22,40,0.82)",
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  padding: "24px 20px",
-                  textAlign: "center",
-                  boxShadow: `0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px ${card.color}10 inset`,
-                  transition: "transform 0.3s, box-shadow 0.3s",
-                  cursor: "default",
-                }}>
-                  <div style={{ display: "flex", justifyContent: "center", marginBottom: "12px" }}>
-                    <div style={{
-                      width: "44px", height: "44px", borderRadius: "14px",
-                      background: `${card.color}10`, border: `1px solid ${card.color}25`,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                    }}>
-                      <Icon style={{ width: "20px", height: "20px", color: card.color }} strokeWidth={1.8} />
+        {/* Capability cards — 3 cards, centered */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", maxWidth: "680px", width: "100%" }}
+            className="image-cards">
+            {CAPABILITY_CARDS.map((card, i) => {
+              const Icon = card.icon;
+              return (
+                <div key={card.label} className={`reveal reveal-delay-${i + 1}`}>
+                  <div style={{
+                    borderRadius: "20px",
+                    border: `1px solid ${card.color}20`,
+                    background: "rgba(11,22,40,0.82)",
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                    padding: "24px 20px",
+                    textAlign: "center",
+                    boxShadow: `0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px ${card.color}10 inset`,
+                    transition: "transform 0.3s, box-shadow 0.3s",
+                    cursor: "default",
+                  }}>
+                    <div style={{ display: "flex", justifyContent: "center", marginBottom: "12px" }}>
+                      <div style={{
+                        width: "44px", height: "44px", borderRadius: "14px",
+                        background: `${card.color}10`, border: `1px solid ${card.color}25`,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                      }}>
+                        <Icon style={{ width: "20px", height: "20px", color: card.color }} strokeWidth={1.8} />
+                      </div>
+                    </div>
+                    <div className="font-mono" style={{ fontSize: "9px", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "4px", color: `${card.color}80` }}>
+                      {card.label}
+                    </div>
+                    <div className="font-display font-black" style={{ fontSize: "18px", color: "#F1F5F9", lineHeight: 1, marginBottom: "4px" }}>
+                      {card.value}
+                    </div>
+                    <div className="font-mono" style={{ fontSize: "9px", color: "#475569", letterSpacing: "0.1em" }}>
+                      {card.sub}
                     </div>
                   </div>
-                  <div className="font-mono" style={{ fontSize: "9px", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "4px", color: `${card.color}80` }}>
-                    {card.label}
-                  </div>
-                  <div className="font-display font-black" style={{ fontSize: "18px", color: "#F1F5F9", lineHeight: 1, marginBottom: "4px" }}>
-                    {card.value}
-                  </div>
-                  <div className="font-mono" style={{ fontSize: "9px", color: "#475569", letterSpacing: "0.1em" }}>
-                    {card.sub}
-                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
 
       <style>{`
         @media (max-width: 640px) {
-          .image-cards { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-        @media (max-width: 380px) {
           .image-cards { grid-template-columns: 1fr !important; }
+        }
+        @media (min-width: 641px) and (max-width: 900px) {
+          .image-cards { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
     </section>

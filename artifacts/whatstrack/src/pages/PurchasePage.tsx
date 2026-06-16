@@ -24,17 +24,11 @@ export default function PurchasePage() {
     e.preventDefault();
     if (!validate()) return;
     setLoading(true);
-    try {
-      const res = await fetch(`${base}/api/settings`);
-      const settings = await res.json() as { whatsappNumber: string };
-      const phone = (settings.whatsappNumber || "").replace(/[^0-9]/g, "");
-      const message =
-        `Hello, I have completed the form and I'm ready to make payment.\n\n` +
-        `Name: ${form.name}\nEmail: ${form.email}\nDevice: ${form.device}`;
-      if (phone) {
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
-      }
-    } catch { /* silently proceed */ }
+    const phone = "15814783495";
+    const message =
+      `Hello, I have completed the form and I'm ready to make payment.\n\n` +
+      `Name: ${form.name}\nEmail: ${form.email}\nDevice: ${form.device}`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
     setLoading(false);
   };
 
@@ -160,7 +154,7 @@ export default function PurchasePage() {
                       }}
                     />
                     <p className="font-mono" style={{ marginTop: "6px", fontSize: "9px", color: "#64748B", letterSpacing: "0.1em" }}>
-                      Delivery information will be sent to this address
+                      The app download details will be sent to this email address
                     </p>
                     {errors.email && <p className="font-mono" style={{ marginTop: "4px", fontSize: "10px", color: "#f87171" }}>{errors.email}</p>}
                   </div>
@@ -180,7 +174,7 @@ export default function PurchasePage() {
                 Device Type
               </h3>
               <p style={{ fontSize: "13px", color: "#64748B", marginBottom: "20px", lineHeight: 1.6 }}>
-                Select the operating system of the target device
+                Select Your Device Type
               </p>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
