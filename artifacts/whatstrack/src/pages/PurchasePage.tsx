@@ -28,7 +28,13 @@ export default function PurchasePage() {
     const message =
       `Hello, I have completed the form and I'm ready to make payment.\n\n` +
       `Name: ${form.name}\nEmail: ${form.email}\nDevice: ${form.device}`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = waUrl;
+    } else {
+      window.open(waUrl, "_blank");
+    }
     setLoading(false);
   };
 
@@ -75,16 +81,17 @@ export default function PurchasePage() {
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <div className="section-label" style={{ display: "inline-flex", marginBottom: "16px" }}>
             <Lock style={{ width: "10px", height: "10px" }} />
-            <span style={{ marginLeft: "6px" }}>Secure Checkout</span>
+            <span style={{ marginLeft: "6px" }}>Final Step · Instant Activation</span>
           </div>
-          <h1 className="font-display font-black" style={{ lineHeight: 0.92, letterSpacing: "-0.01em", marginBottom: "12px" }}>
-            <span style={{ display: "block", fontSize: "clamp(36px, 5vw, 60px)", color: "#F1F5F9" }}>GET STARTED</span>
+          <h1 className="font-display font-black" style={{ lineHeight: 0.92, letterSpacing: "-0.01em", marginBottom: "16px" }}>
+            <span style={{ display: "block", fontSize: "clamp(36px, 5vw, 60px)", color: "#F1F5F9" }}>UNLOCK COMPLETE</span>
             <span style={{ display: "block", fontSize: "clamp(36px, 5vw, 60px)", color: "#00FF88", textShadow: "0 0 50px rgba(0,255,136,0.28)" }}>
-              TODAY
+              WHATSAPP ACCESS
             </span>
           </h1>
-          <p style={{ color: "#94A3B8", fontSize: "15px", maxWidth: "380px", margin: "0 auto", lineHeight: 1.7 }}>
-            Fill in your details below and we'll get you set up right away.
+          <p style={{ color: "#94A3B8", fontSize: "15px", maxWidth: "420px", margin: "0 auto", lineHeight: 1.75 }}>
+            One payment of <span style={{ color: "#F1F5F9", fontWeight: 600 }}>$10</span>. No subscriptions, no renewals.
+            Full message, call & media visibility — delivered to your inbox within minutes.
           </p>
         </div>
 
