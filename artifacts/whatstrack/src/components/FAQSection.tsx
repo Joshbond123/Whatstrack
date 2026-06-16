@@ -37,6 +37,13 @@ const FAQ_ITEMS = [
   },
 ];
 
+const STATS = [
+  { v: "50K+", l: "Satisfied Users" },
+  { v: "99.97%", l: "Uptime Rate" },
+  { v: "<5 min", l: "Setup Time" },
+  { v: "24/7", l: "Support" },
+];
+
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
   const sectionRef = useScrollReveal() as React.RefObject<HTMLElement>;
@@ -45,101 +52,101 @@ export default function FAQSection() {
     <section
       id="faq"
       ref={sectionRef}
-      className="relative py-24 sm:py-32 overflow-hidden"
-      style={{ background: "#050D1A" }}
+      className="relative overflow-hidden"
+      style={{ background: "#050D1A", padding: "96px 0" }}
     >
       {/* Background accent */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px]"
-          style={{ background: "radial-gradient(ellipse, rgba(0,255,136,0.04) 0%, transparent 65%)", filter: "blur(60px)" }} />
+      <div style={{
+        position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden",
+      }}>
+        <div style={{
+          position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)",
+          width: "600px", height: "400px",
+          background: "radial-gradient(ellipse, rgba(0,255,136,0.04) 0%, transparent 65%)",
+          filter: "blur(60px)",
+        }} />
       </div>
 
       <div className="page-container" style={{ position: "relative" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "64px", alignItems: "start" }}
+          className="faq-grid">
 
-        <div className="grid lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-16 items-start">
-
-          {/* Left: Header */}
-          <div className="lg:sticky lg:top-28">
-            <div className="section-label mb-5 reveal">Intel Brief</div>
-            <h2 className="font-display font-black text-white uppercase leading-none mb-5 reveal">
-              <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl">FREQUENTLY</span>
-              <span
-                className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl text-[#00FF88] mt-1"
-                style={{ textShadow: "0 0 40px rgba(0,255,136,0.25)" }}
-              >
+          {/* Left: Header (sticky) */}
+          <div style={{ position: "sticky", top: "112px" }}>
+            <div className="section-label reveal" style={{ display: "inline-flex", marginBottom: "16px" }}>Intel Brief</div>
+            <h2 className="font-display font-black reveal" style={{ lineHeight: 0.9, letterSpacing: "-0.01em", marginBottom: "20px" }}>
+              <span style={{ display: "block", fontSize: "clamp(28px, 4vw, 52px)", color: "#F1F5F9" }}>FREQUENTLY</span>
+              <span style={{ display: "block", fontSize: "clamp(28px, 4vw, 52px)", color: "#00FF88", textShadow: "0 0 40px rgba(0,255,136,0.25)" }}>
                 ASKED
               </span>
-              <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl">QUESTIONS</span>
+              <span style={{ display: "block", fontSize: "clamp(28px, 4vw, 52px)", color: "#F1F5F9" }}>QUESTIONS</span>
             </h2>
-            <p className="text-[#64748B] text-sm leading-relaxed max-w-sm reveal reveal-delay-1">
-              Everything you need to know about WhatsTrack. Can't find the answer you're looking for? Our support team is available 24/7.
+            <p className="reveal reveal-delay-1" style={{ color: "#64748B", fontSize: "13px", lineHeight: 1.7, maxWidth: "280px" }}>
+              Everything you need to know about WhatsTrack. Support team available 24/7.
             </p>
 
             {/* Stats */}
-            <div className="mt-8 grid grid-cols-2 gap-3 reveal reveal-delay-2">
-              {[
-                { v: "50K+", l: "Satisfied Users" },
-                { v: "99.97%", l: "Uptime Rate" },
-                { v: "&lt;5 min", l: "Setup Time" },
-                { v: "24/7", l: "Support" },
-              ].map((s) => (
-                <div
-                  key={s.l}
-                  className="rounded-xl p-3.5 border"
-                  style={{ background: "#0B1628", borderColor: "rgba(255,255,255,0.06)" }}
-                >
-                  <div
-                    className="font-display font-black text-xl leading-none mb-0.5"
-                    dangerouslySetInnerHTML={{ __html: s.v }}
-                    style={{ color: "#00FF88" }}
-                  />
-                  <div className="font-mono text-[9px] text-[#475569] tracking-wider uppercase">{s.l}</div>
+            <div style={{ marginTop: "32px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}
+              className="reveal reveal-delay-2">
+              {STATS.map((s) => (
+                <div key={s.l} style={{
+                  borderRadius: "14px", padding: "14px 16px",
+                  background: "#0B1628", border: "1px solid rgba(255,255,255,0.06)",
+                }}>
+                  <div className="font-display font-black" style={{ fontSize: "22px", lineHeight: 1, marginBottom: "4px", color: "#00FF88" }}>
+                    {s.v}
+                  </div>
+                  <div className="font-mono" style={{ fontSize: "9px", color: "#475569", letterSpacing: "0.15em", textTransform: "uppercase" }}>{s.l}</div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Right: Accordion */}
-          <div className="space-y-2">
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             {FAQ_ITEMS.map((item, i) => (
               <div
                 key={i}
-                className={`reveal card-hover rounded-2xl border overflow-hidden transition-all duration-300 ${
-                  i < 4 ? `reveal-delay-${i + 1}` : ""
-                }`}
+                className={`reveal card-hover${i < 4 ? ` reveal-delay-${i + 1}` : ""}`}
                 style={{
+                  borderRadius: "16px",
+                  border: `1px solid ${open === i ? "rgba(0,255,136,0.18)" : "rgba(255,255,255,0.05)"}`,
                   background: open === i ? "#0B1628" : "rgba(11,22,40,0.5)",
-                  borderColor: open === i ? "rgba(0,255,136,0.2)" : "rgba(255,255,255,0.05)",
-                  boxShadow: open === i ? "0 4px 24px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,255,136,0.05) inset" : "none",
+                  boxShadow: open === i ? "0 4px 24px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,255,136,0.04) inset" : "none",
+                  overflow: "hidden",
+                  transition: "all 0.25s",
                 }}
               >
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-center justify-between px-5 py-4 text-left gap-4 cursor-pointer group"
+                  style={{
+                    width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
+                    padding: "18px 20px", textAlign: "left", gap: "16px",
+                    background: "none", border: "none", cursor: "pointer",
+                  }}
                 >
-                  <span className="text-sm font-medium text-[#E2E8F0] leading-snug group-hover:text-white transition-colors">
+                  <span style={{ fontSize: "14px", fontWeight: 500, color: open === i ? "#F1F5F9" : "#CBD5E1", lineHeight: 1.4, transition: "color 0.2s" }}>
                     {item.q}
                   </span>
-                  <div
-                    className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200"
-                    style={open === i
-                      ? { background: "rgba(0,255,136,0.1)", border: "1px solid rgba(0,255,136,0.25)" }
-                      : { background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }
-                    }
-                  >
+                  <div style={{
+                    flexShrink: 0, width: "28px", height: "28px", borderRadius: "8px",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    background: open === i ? "rgba(0,255,136,0.1)" : "rgba(255,255,255,0.04)",
+                    border: `1px solid ${open === i ? "rgba(0,255,136,0.25)" : "rgba(255,255,255,0.08)"}`,
+                    transition: "all 0.2s",
+                  }}>
                     {open === i
-                      ? <Minus className="w-3 h-3 text-[#00FF88]" strokeWidth={2.5} />
-                      : <Plus className="w-3 h-3 text-[#64748B]" strokeWidth={2.5} />
+                      ? <Minus style={{ width: "12px", height: "12px", color: "#00FF88" }} strokeWidth={2.5} />
+                      : <Plus style={{ width: "12px", height: "12px", color: "#64748B" }} strokeWidth={2.5} />
                     }
                   </div>
                 </button>
 
-                <div
-                  className="overflow-hidden transition-all duration-300"
-                  style={{ maxHeight: open === i ? "200px" : "0" }}
-                >
-                  <div className="px-5 pb-5 border-t border-white/[0.04]">
-                    <p className="text-[#64748B] text-sm leading-relaxed pt-4">{item.a}</p>
+                <div style={{ maxHeight: open === i ? "300px" : "0", overflow: "hidden", transition: "max-height 0.3s ease" }}>
+                  <div style={{ padding: "0 20px 20px", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+                    <p style={{ paddingTop: "16px", fontSize: "13px", color: "#64748B", lineHeight: 1.75 }}>
+                      {item.a}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -147,6 +154,18 @@ export default function FAQSection() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .faq-grid {
+            grid-template-columns: 1fr !important;
+            gap: 48px !important;
+          }
+          .faq-grid > div:first-child {
+            position: static !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

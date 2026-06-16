@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, Route } from "wouter";
+import { Router, Switch, Route } from "wouter";
 import HomePage from "./pages/HomePage";
 import PurchasePage from "./pages/PurchasePage";
 import AdminPanel from "./pages/AdminPanel";
@@ -16,16 +16,16 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Switch base={base}>
+    <Router base={base}>
+      <Switch>
         <Route path="/" component={HomePage} />
         <Route path="/purchase" component={PurchasePage} />
         <Route path="/admin" component={AdminPanel} />
         <Route>
-          <div className="min-h-screen flex items-center justify-center bg-[#070C1A] text-white font-mono">
-            <div className="text-center">
-              <p className="text-[#00FF88] text-6xl font-bold">404</p>
-              <p className="mt-2 text-gray-400 text-sm">Page not found</p>
+          <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#070C1A", color: "#fff" }}>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ color: "#00FF88", fontSize: "64px", fontWeight: 700 }}>404</p>
+              <p style={{ marginTop: "8px", color: "#9ca3af", fontSize: "14px" }}>Page not found</p>
             </div>
           </div>
         </Route>
@@ -35,7 +35,7 @@ function App() {
         open={showAdminModal}
         onClose={() => setShowAdminModal(false)}
       />
-    </>
+    </Router>
   );
 }
 

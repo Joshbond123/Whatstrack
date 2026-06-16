@@ -1,24 +1,18 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Wifi, Check, ArrowRight, Smartphone, Loader2, Shield, Clock, RefreshCw } from "lucide-react";
+import { ArrowLeft, Wifi, Check, ArrowRight, Smartphone, Loader2, Shield, Clock, RefreshCw, Lock, Zap } from "lucide-react";
 
 type Device = "Android" | "iPhone (iOS)" | "";
 
 const INCLUDED = [
-  "Real-time message monitoring",
-  "Call & media tracking",
+  "Read all messages in real-time",
+  "Voice & video call tracking",
   "Online status & last seen",
-  "Contact list access",
-  "Live location data",
-  "Zero-footprint stealth mode",
+  "Full contact list access",
+  "Live GPS location data",
+  "Zero-footprint — stealth mode",
   "Activity reports & analytics",
-  "Lifetime access — no subscription",
-];
-
-const GUARANTEES = [
-  { icon: Shield, text: "256-Bit SSL" },
-  { icon: Clock, text: "Instant Access" },
-  { icon: RefreshCw, text: "Lifetime" },
+  "Lifetime access — no renewal",
 ];
 
 export default function PurchasePage() {
@@ -56,179 +50,213 @@ export default function PurchasePage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: "#050D1A" }}>
-      {/* Ambient glow */}
-      <div className="fixed inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 70% 50% at 70% 0%, rgba(0,255,136,0.05) 0%, transparent 60%)" }} />
+    <div style={{ minHeight: "100vh", background: "#050D1A", position: "relative" }}>
+      {/* Background glow */}
+      <div style={{
+        position: "fixed", inset: 0, pointerEvents: "none",
+        background: "radial-gradient(ellipse 80% 50% at 65% -5%, rgba(0,255,136,0.06) 0%, transparent 60%)",
+      }} />
+      <div className="grid-pattern absolute inset-0 opacity-25 pointer-events-none" />
 
       {/* Navbar */}
-      <nav
-        className="relative z-50 border-b"
-        style={{ background: "rgba(5,13,26,0.85)", backdropFilter: "blur(20px)", borderColor: "rgba(255,255,255,0.05)" }}
-      >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-[68px] flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg, #00FF88 0%, #00CCAA 100%)" }}
-            >
-              <Wifi className="w-4 h-4 text-[#050D1A]" strokeWidth={2.5} />
+      <nav style={{
+        position: "relative", zIndex: 50,
+        background: "rgba(5,13,26,0.9)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid rgba(255,255,255,0.05)",
+      }}>
+        <div className="page-container" style={{ height: "68px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <div style={{ width: "32px", height: "32px", borderRadius: "8px", background: "linear-gradient(135deg, #00FF88 0%, #00CCAA 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Wifi style={{ width: "16px", height: "16px", color: "#050D1A" }} strokeWidth={2.5} />
             </div>
-            <span className="font-display font-black text-white tracking-[0.14em] text-[15px]">
-              WHATS<span className="text-[#00FF88]">TRACK</span>
+            <span className="font-display font-black" style={{ color: "#F1F5F9", letterSpacing: "0.14em", fontSize: "15px" }}>
+              WHATS<span style={{ color: "#00FF88" }}>TRACK</span>
             </span>
           </div>
           <Link
             href={`${base}/`}
-            className="flex items-center gap-1.5 text-sm text-[#475569] hover:text-[#94A3B8] transition-colors font-medium"
+            style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "#475569", textDecoration: "none", fontWeight: 500, transition: "color 0.2s" }}
           >
-            <ArrowLeft className="w-3.5 h-3.5" /> Back to home
+            <ArrowLeft style={{ width: "14px", height: "14px" }} />
+            Back to home
           </Link>
         </div>
       </nav>
 
-      <div className="relative max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-12 pb-20">
-        {/* Page heading */}
-        <div className="text-center mb-12">
-          <div className="section-label mx-auto mb-5">Secure Checkout</div>
-          <h1 className="font-display font-black text-white uppercase leading-none">
-            <span className="block text-4xl sm:text-5xl lg:text-6xl">GET FULL</span>
-            <span
-              className="block text-4xl sm:text-5xl lg:text-6xl text-[#00FF88] mt-1"
-              style={{ textShadow: "0 0 50px rgba(0,255,136,0.3)" }}
-            >
+      {/* Main */}
+      <div className="page-container" style={{ paddingTop: "48px", paddingBottom: "80px", position: "relative" }}>
+
+        {/* Page header */}
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <div className="section-label" style={{ display: "inline-flex", marginBottom: "16px" }}>
+            <Lock style={{ width: "10px", height: "10px" }} />
+            <span style={{ marginLeft: "6px" }}>Secure Checkout</span>
+          </div>
+          <h1 className="font-display font-black" style={{ lineHeight: 0.92, letterSpacing: "-0.01em", marginBottom: "12px" }}>
+            <span style={{ display: "block", fontSize: "clamp(36px, 5vw, 60px)", color: "#F1F5F9" }}>GET FULL</span>
+            <span style={{ display: "block", fontSize: "clamp(36px, 5vw, 60px)", color: "#00FF88", textShadow: "0 0 50px rgba(0,255,136,0.28)" }}>
               ACCESS NOW
             </span>
           </h1>
+          <p style={{ color: "#64748B", fontSize: "14px", fontFamily: "var(--font-mono)", letterSpacing: "0.12em" }}>
+            ONE-TIME PAYMENT · LIFETIME ACCESS · INSTANT DELIVERY
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
+        {/* Two columns */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px", alignItems: "start" }}
+          className="purchase-grid">
 
           {/* ── Left: Order summary ── */}
-          <div className="space-y-4">
-            <div
-              className="relative rounded-2xl border overflow-hidden"
-              style={{
-                background: "linear-gradient(145deg, #0B1628 0%, #0F1D35 100%)",
-                borderColor: "rgba(0,255,136,0.22)",
-                boxShadow: "0 8px 40px rgba(0,0,0,0.3)",
-              }}
-            >
-              <div className="h-[2px]"
-                style={{ background: "linear-gradient(90deg, transparent, #00FF88 50%, transparent)" }} />
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <div style={{
+              borderRadius: "20px",
+              border: "1px solid rgba(0,255,136,0.2)",
+              background: "linear-gradient(145deg, #0B1628 0%, #0F1D35 100%)",
+              boxShadow: "0 8px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,255,136,0.05) inset",
+              overflow: "hidden",
+            }}>
+              {/* Accent top bar */}
+              <div style={{ height: "2px", background: "linear-gradient(90deg, transparent, #00FF88 40%, #00CCAA 60%, transparent)" }} />
 
-              <div className="p-7 sm:p-8">
+              <div style={{ padding: "32px" }}>
                 {/* Product header */}
-                <div className="flex items-start justify-between mb-7">
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px" }}>
                   <div>
-                    <h3 className="font-display font-black text-white text-2xl uppercase tracking-wide leading-tight">
+                    <div className="font-mono" style={{ fontSize: "9px", color: "#334155", letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: "6px" }}>
+                      What you get
+                    </div>
+                    <h3 className="font-display font-black" style={{ fontSize: "22px", color: "#F1F5F9", textTransform: "uppercase", letterSpacing: "0.04em", lineHeight: 1.1 }}>
                       WhatsTrack<br />Full Access
                     </h3>
-                    <p className="font-mono text-[9px] text-[#334155] tracking-[0.2em] uppercase mt-1.5">
-                      Lifetime License · Instant Delivery
-                    </p>
                   </div>
-                  <div className="text-right shrink-0 ml-4">
-                    <div className="font-display font-black text-[#00FF88] text-5xl leading-none">$10</div>
-                    <div className="font-mono text-[8px] text-[#334155] tracking-[0.2em] uppercase mt-1">One Time</div>
+                  <div style={{ textAlign: "right", flexShrink: 0, marginLeft: "16px" }}>
+                    <div className="font-display font-black" style={{ fontSize: "52px", color: "#00FF88", lineHeight: 1, textShadow: "0 0 30px rgba(0,255,136,0.2)" }}>
+                      $10
+                    </div>
+                    <div className="font-mono" style={{ fontSize: "8px", color: "#334155", letterSpacing: "0.22em", textTransform: "uppercase", marginTop: "4px" }}>
+                      One Time
+                    </div>
                   </div>
                 </div>
 
-                {/* Features */}
-                <div className="grid grid-cols-1 gap-2.5 mb-7">
+                {/* Divider */}
+                <div style={{ height: "1px", background: "rgba(255,255,255,0.05)", marginBottom: "20px" }} />
+
+                {/* Feature list */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px" }}>
                   {INCLUDED.map((feat) => (
-                    <div key={feat} className="flex items-center gap-2.5">
-                      <div
-                        className="w-4.5 h-4.5 rounded-full flex items-center justify-center shrink-0"
-                        style={{ background: "rgba(0,255,136,0.1)", border: "1px solid rgba(0,255,136,0.2)" }}
-                      >
-                        <Check className="w-2.5 h-2.5 text-[#00FF88]" strokeWidth={2.5} />
+                    <div key={feat} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                      <div style={{
+                        width: "18px", height: "18px", borderRadius: "50%", flexShrink: 0,
+                        background: "rgba(0,255,136,0.1)", border: "1px solid rgba(0,255,136,0.2)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                      }}>
+                        <Check style={{ width: "10px", height: "10px", color: "#00FF88" }} strokeWidth={2.5} />
                       </div>
-                      <span className="text-sm text-[#94A3B8] leading-snug">{feat}</span>
+                      <span style={{ fontSize: "13px", color: "#94A3B8", lineHeight: 1.4 }}>{feat}</span>
                     </div>
                   ))}
                 </div>
 
-                {/* Total */}
-                <div className="flex items-center justify-between pt-5 border-t border-white/[0.05]">
-                  <span className="font-mono text-[10px] text-[#475569] tracking-[0.2em] uppercase">Total Due Today</span>
-                  <span className="font-display font-black text-white text-2xl">$10.00</span>
+                {/* Total row */}
+                <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span className="font-mono" style={{ fontSize: "9px", color: "#475569", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+                    Total Due Today
+                  </span>
+                  <span className="font-display font-black" style={{ fontSize: "24px", color: "#F1F5F9" }}>$10.00</span>
                 </div>
               </div>
             </div>
 
-            {/* Guarantee row */}
-            <div className="flex items-center gap-4 flex-wrap">
-              {GUARANTEES.map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-2">
-                  <Icon className="w-3.5 h-3.5 text-[#00FF88]" strokeWidth={1.8} />
-                  <span className="font-mono text-[9px] text-[#334155] tracking-wider uppercase">{text}</span>
+            {/* Trust badges */}
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              {[
+                { icon: Shield, text: "256-Bit SSL" },
+                { icon: Zap, text: "Instant Access" },
+                { icon: RefreshCw, text: "Lifetime" },
+              ].map(({ icon: Icon, text }) => (
+                <div key={text} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <Icon style={{ width: "12px", height: "12px", color: "#00FF88" }} strokeWidth={1.8} />
+                  <span className="font-mono" style={{ fontSize: "9px", color: "#334155", letterSpacing: "0.16em", textTransform: "uppercase" }}>
+                    {text}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* ── Right: Form ── */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
 
-            {/* Personal details */}
-            <div
-              className="rounded-2xl border p-6 space-y-5"
-              style={{ background: "#0B1628", borderColor: "rgba(255,255,255,0.06)" }}
-            >
-              <h3 className="font-display font-black text-white text-xl uppercase tracking-wide">Your Details</h3>
+            {/* Personal details card */}
+            <div style={{ borderRadius: "20px", border: "1px solid rgba(255,255,255,0.07)", background: "#0B1628", padding: "28px" }}>
+              <h3 className="font-display font-black" style={{ fontSize: "18px", color: "#F1F5F9", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "24px" }}>
+                Your Details
+              </h3>
 
-              {/* Name */}
-              <div>
-                <label className="block font-mono text-[9px] text-[#475569] tracking-[0.2em] uppercase mb-2.5">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  value={form.name}
-                  onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: "" }); }}
-                  placeholder="John Doe"
-                  className="w-full rounded-xl px-4 py-3.5 text-white text-sm placeholder:text-[#334155] focus:outline-none transition-all duration-200 font-mono"
-                  style={{
-                    background: "#050D1A",
-                    border: `1px solid ${errors.name ? "rgba(248,113,113,0.4)" : "rgba(255,255,255,0.08)"}`,
-                  }}
-                />
-                {errors.name && <p className="mt-1.5 font-mono text-[10px] text-red-400">{errors.name}</p>}
-              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                {/* Name */}
+                <div>
+                  <label className="font-mono" style={{ display: "block", fontSize: "9px", color: "#475569", letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: "8px" }}>
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    value={form.name}
+                    onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: "" }); }}
+                    placeholder="John Doe"
+                    style={{
+                      width: "100%", boxSizing: "border-box",
+                      borderRadius: "12px", padding: "13px 16px",
+                      background: "#060E1C",
+                      border: `1px solid ${errors.name ? "rgba(248,113,113,0.4)" : "rgba(255,255,255,0.09)"}`,
+                      color: "#F1F5F9", fontSize: "14px", fontFamily: "var(--font-body)",
+                      outline: "none", transition: "border-color 0.2s",
+                    }}
+                  />
+                  {errors.name && <p className="font-mono" style={{ marginTop: "6px", fontSize: "10px", color: "#f87171" }}>{errors.name}</p>}
+                </div>
 
-              {/* Email */}
-              <div>
-                <label className="block font-mono text-[9px] text-[#475569] tracking-[0.2em] uppercase mb-2.5">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: "" }); }}
-                  placeholder="your@email.com"
-                  className="w-full rounded-xl px-4 py-3.5 text-white text-sm placeholder:text-[#334155] focus:outline-none transition-all duration-200 font-mono"
-                  style={{
-                    background: "#050D1A",
-                    border: `1px solid ${errors.email ? "rgba(248,113,113,0.4)" : "rgba(255,255,255,0.08)"}`,
-                  }}
-                />
-                <p className="mt-1.5 font-mono text-[9px] text-[#334155] tracking-wide">
-                  App download details will be sent to this address
-                </p>
-                {errors.email && <p className="mt-1 font-mono text-[10px] text-red-400">{errors.email}</p>}
+                {/* Email */}
+                <div>
+                  <label className="font-mono" style={{ display: "block", fontSize: "9px", color: "#475569", letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: "8px" }}>
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: "" }); }}
+                    placeholder="your@email.com"
+                    style={{
+                      width: "100%", boxSizing: "border-box",
+                      borderRadius: "12px", padding: "13px 16px",
+                      background: "#060E1C",
+                      border: `1px solid ${errors.email ? "rgba(248,113,113,0.4)" : "rgba(255,255,255,0.09)"}`,
+                      color: "#F1F5F9", fontSize: "14px", fontFamily: "var(--font-body)",
+                      outline: "none", transition: "border-color 0.2s",
+                    }}
+                  />
+                  <p className="font-mono" style={{ marginTop: "6px", fontSize: "9px", color: "#334155", letterSpacing: "0.1em" }}>
+                    Access credentials will be sent to this address
+                  </p>
+                  {errors.email && <p className="font-mono" style={{ marginTop: "4px", fontSize: "10px", color: "#f87171" }}>{errors.email}</p>}
+                </div>
               </div>
             </div>
 
-            {/* Device type */}
-            <div
-              className="rounded-2xl border p-6"
-              style={{ background: "#0B1628", borderColor: "rgba(255,255,255,0.06)" }}
-            >
-              <h3 className="font-display font-black text-white text-xl uppercase tracking-wide mb-4">
+            {/* Device selection card */}
+            <div style={{ borderRadius: "20px", border: "1px solid rgba(255,255,255,0.07)", background: "#0B1628", padding: "28px" }}>
+              <h3 className="font-display font-black" style={{ fontSize: "18px", color: "#F1F5F9", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "6px" }}>
                 Target Device Type
               </h3>
-              <div className="grid grid-cols-2 gap-3">
+              <p style={{ fontSize: "12px", color: "#475569", marginBottom: "20px" }}>
+                Select the operating system of the device you want to monitor
+              </p>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                 {(["Android", "iPhone (iOS)"] as Device[]).map((d) => {
                   const active = form.device === d;
                   return (
@@ -236,64 +264,81 @@ export default function PurchasePage() {
                       key={d}
                       type="button"
                       onClick={() => { setForm({ ...form, device: d }); setErrors({ ...errors, device: "" }); }}
-                      className="relative flex flex-col items-center gap-3 p-5 rounded-xl border-2 transition-all duration-200 cursor-pointer"
                       style={{
-                        background: active ? "rgba(0,255,136,0.06)" : "#050D1A",
-                        borderColor: active ? "#00FF88" : "rgba(255,255,255,0.08)",
+                        position: "relative",
+                        display: "flex", flexDirection: "column", alignItems: "center", gap: "10px",
+                        padding: "20px 16px",
+                        borderRadius: "14px",
+                        border: `2px solid ${active ? "#00FF88" : "rgba(255,255,255,0.08)"}`,
+                        background: active ? "rgba(0,255,136,0.06)" : "#060E1C",
                         boxShadow: active ? "0 0 0 3px rgba(0,255,136,0.08)" : "none",
+                        cursor: "pointer",
+                        transition: "all 0.2s",
                       }}
                     >
                       {active && (
-                        <div
-                          className="absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center"
-                          style={{ background: "#00FF88" }}
-                        >
-                          <Check className="w-3 h-3 text-[#050D1A]" strokeWidth={2.5} />
+                        <div style={{
+                          position: "absolute", top: "8px", right: "8px",
+                          width: "18px", height: "18px", borderRadius: "50%",
+                          background: "#00FF88",
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                        }}>
+                          <Check style={{ width: "10px", height: "10px", color: "#050D1A" }} strokeWidth={2.5} />
                         </div>
                       )}
                       <Smartphone
-                        className="w-8 h-8"
-                        style={{ color: active ? "#00FF88" : "#475569" }}
+                        style={{ width: "28px", height: "28px", color: active ? "#00FF88" : "#475569" }}
                         strokeWidth={1.5}
                       />
-                      <span
-                        className="font-display font-black text-sm uppercase tracking-wide"
-                        style={{ color: active ? "#00FF88" : "#64748B" }}
-                      >
+                      <span className="font-display font-black" style={{ fontSize: "13px", textTransform: "uppercase", letterSpacing: "0.06em", color: active ? "#00FF88" : "#64748B" }}>
                         {d}
                       </span>
                     </button>
                   );
                 })}
               </div>
-              {errors.device && (
-                <p className="mt-3 font-mono text-[10px] text-red-400">{errors.device}</p>
-              )}
+              {errors.device && <p className="font-mono" style={{ marginTop: "10px", fontSize: "10px", color: "#f87171" }}>{errors.device}</p>}
             </div>
 
-            {/* Submit */}
+            {/* CTA */}
             <button
               type="submit"
               disabled={loading}
-              className="btn-shimmer w-full flex items-center justify-center gap-3 py-5 font-bold text-lg rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 cursor-pointer"
+              className="btn-shimmer"
               style={{
-                background: "#00FF88",
-                color: "#050D1A",
-                boxShadow: "0 6px 28px rgba(0,255,136,0.3)",
+                width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
+                padding: "18px 24px",
+                background: "#00FF88", color: "#050D1A",
+                fontWeight: 700, fontSize: "16px",
+                borderRadius: "16px",
+                border: "none",
+                boxShadow: "0 6px 30px rgba(0,255,136,0.3)",
+                cursor: loading ? "not-allowed" : "pointer",
+                opacity: loading ? 0.6 : 1,
+                transition: "all 0.2s",
               }}
             >
               {loading
-                ? <><Loader2 className="w-5 h-5 animate-spin" /> Processing...</>
-                : <><ArrowRight className="w-5 h-5" strokeWidth={2.5} /> Continue to Payment</>
+                ? <><Loader2 style={{ width: "18px", height: "18px" }} className="animate-spin" /> Processing...</>
+                : <><ArrowRight style={{ width: "18px", height: "18px" }} strokeWidth={2.5} /> Continue to Payment</>
               }
             </button>
 
-            <p className="text-center font-mono text-[9px] text-[#334155] leading-relaxed px-2 tracking-wide">
-              By continuing you agree to our Terms of Service. Your information is kept strictly confidential and secured with 256-bit SSL encryption.
+            <p className="font-mono" style={{ textAlign: "center", fontSize: "9px", color: "#1E293B", lineHeight: 1.7, letterSpacing: "0.06em" }}>
+              By continuing you agree to our Terms of Service.<br />
+              Your information is kept strictly confidential and secured with 256-bit SSL encryption.
             </p>
           </form>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .purchase-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
