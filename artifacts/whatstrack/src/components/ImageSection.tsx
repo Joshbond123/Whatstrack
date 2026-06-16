@@ -4,7 +4,7 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 const BG_IMAGE = "https://media.base44.com/images/public/6a2fdd6f77f22f5cf4a24501/019c82b65_generated_image.png";
 
 const CAPABILITY_CARDS = [
-  { icon: MessageSquare, label: "Messages", value: "Full Access", sub: "All chats & deleted", color: "#00FF88" },
+  { icon: MessageSquare, label: "Messages", value: "Full Access", sub: "All chats", color: "#00FF88" },
   { icon: Phone, label: "Calls", value: "Logged", sub: "Voice & video", color: "#60A5FA" },
   { icon: Shield, label: "Stealth", value: "Zero Trace", sub: "Fully undetectable", color: "#A78BFA" },
 ];

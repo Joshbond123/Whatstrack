@@ -31,11 +31,13 @@ export default function PurchasePage() {
     const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     if (isMobile) {
-      window.location.href = waUrl;
+      setTimeout(() => { window.location.href = waUrl; }, 800);
     } else {
-      window.open(waUrl, "_blank");
+      setTimeout(() => {
+        window.open(waUrl, "_blank");
+        setLoading(false);
+      }, 800);
     }
-    setLoading(false);
   };
 
   return (
