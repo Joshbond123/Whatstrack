@@ -8,9 +8,7 @@ const FEATURES_INCLUDED = [
   "Full media access (photos, videos, docs)",
   "Contact list synchronization",
   "Online status & last seen tracking",
-  "Live location data access",
   "Zero-footprint stealth mode",
-  "Activity reports & analytics",
   "iOS & Android compatible",
   "256-bit end-to-end encryption",
   "Lifetime access — no subscription",
@@ -35,7 +33,6 @@ export default function PricingSection() {
       className="relative overflow-hidden"
       style={{ background: "#080F1E", padding: "96px 0" }}
     >
-      {/* Center glow */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden",
       }}>
@@ -49,8 +46,6 @@ export default function PricingSection() {
       </div>
 
       <div className="page-container" style={{ position: "relative" }}>
-
-        {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "56px" }}>
           <div className="section-label reveal" style={{ display: "inline-flex", marginBottom: "16px" }}>Access Pricing</div>
           <h2 className="font-display font-black reveal" style={{ lineHeight: 0.92, letterSpacing: "-0.01em", marginBottom: "16px" }}>
@@ -66,8 +61,6 @@ export default function PricingSection() {
 
         <div style={{ display: "flex", justifyContent: "center" }} className="reveal reveal-delay-2">
           <div style={{ width: "100%", maxWidth: "640px" }}>
-
-            {/* Popular badge */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "-1px", position: "relative", zIndex: 10 }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: "6px",
@@ -81,7 +74,6 @@ export default function PricingSection() {
               </div>
             </div>
 
-            {/* Main card */}
             <div style={{
               borderRadius: "20px",
               border: "2px solid rgba(0,255,136,0.28)",
@@ -89,45 +81,39 @@ export default function PricingSection() {
               boxShadow: "0 0 60px rgba(0,255,136,0.08), 0 20px 60px rgba(0,0,0,0.4)",
               overflow: "hidden",
             }}>
-              {/* Accent top */}
               <div style={{ height: "2px", background: "linear-gradient(90deg, transparent, #00FF88 40%, #00CCAA 60%, transparent)" }} />
 
               <div style={{ padding: "40px" }}>
-
-                {/* Price + guarantees */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "24px", marginBottom: "40px", flexWrap: "wrap" }}>
                   <div>
-                    <div className="font-mono" style={{ fontSize: "10px", color: "#475569", letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "8px" }}>
+                    <div className="font-mono" style={{ fontSize: "10px", color: "#64748B", letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "8px" }}>
                       One-Time Payment
                     </div>
                     <div style={{ display: "flex", alignItems: "flex-start", gap: "4px" }}>
                       <span className="font-display font-black" style={{ fontSize: "32px", color: "#00FF88", marginTop: "12px" }}>$</span>
                       <span className="font-display font-black" style={{ fontSize: "clamp(72px, 12vw, 108px)", color: "#F1F5F9", lineHeight: 1 }}>10</span>
                     </div>
-                    <div className="font-mono" style={{ fontSize: "10px", color: "#475569", letterSpacing: "0.2em", textTransform: "uppercase", marginTop: "4px" }}>
+                    <div className="font-mono" style={{ fontSize: "10px", color: "#64748B", letterSpacing: "0.2em", textTransform: "uppercase", marginTop: "4px" }}>
                       Lifetime access · No renewals
                     </div>
                   </div>
 
-                  {/* Guarantee badges */}
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", minWidth: "160px" }}>
                     {GUARANTEES.map(({ icon: Icon, label }) => (
                       <div key={label} style={{
                         display: "flex", alignItems: "center", gap: "8px",
                         background: "rgba(5,13,26,0.6)", borderRadius: "10px",
-                        padding: "10px 12px", border: "1px solid rgba(255,255,255,0.05)",
+                        padding: "10px 12px", border: "1px solid rgba(255,255,255,0.07)",
                       }}>
                         <Icon style={{ width: "13px", height: "13px", color: "#00FF88", flexShrink: 0 }} strokeWidth={1.8} />
-                        <span className="font-mono" style={{ fontSize: "9px", color: "#64748B", letterSpacing: "0.1em" }}>{label}</span>
+                        <span className="font-mono" style={{ fontSize: "9px", color: "#94A3B8", letterSpacing: "0.1em" }}>{label}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Divider */}
                 <div style={{ height: "1px", background: "rgba(255,255,255,0.06)", marginBottom: "32px" }} />
 
-                {/* Features */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px 16px", marginBottom: "36px" }}
                   className="pricing-features">
                   {FEATURES_INCLUDED.map((feat) => (
@@ -144,7 +130,6 @@ export default function PricingSection() {
                   ))}
                 </div>
 
-                {/* CTA */}
                 <Link
                   href={`${base}/purchase`}
                   className="btn-shimmer"
@@ -163,7 +148,7 @@ export default function PricingSection() {
                   <ArrowRight style={{ width: "18px", height: "18px" }} strokeWidth={2.5} />
                 </Link>
 
-                <p className="font-mono" style={{ textAlign: "center", fontSize: "9px", color: "#334155", marginTop: "16px", letterSpacing: "0.2em" }}>
+                <p className="font-mono" style={{ textAlign: "center", fontSize: "9px", color: "#475569", marginTop: "16px", letterSpacing: "0.2em" }}>
                   256-BIT SSL ENCRYPTED · ANONYMOUS · INSTANT DELIVERY
                 </p>
               </div>

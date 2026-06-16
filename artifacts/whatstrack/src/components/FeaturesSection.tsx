@@ -1,4 +1,4 @@
-import { MessageSquare, Phone, Camera, Users, Clock, MapPin, Lock, BarChart3 } from "lucide-react";
+import { MessageSquare, Phone, Camera, Users, Clock, Lock } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const FEATURES = [
@@ -39,25 +39,11 @@ const FEATURES = [
     color: "#34D399",
   },
   {
-    icon: MapPin,
-    title: "Live Location",
-    desc: "Access shared location data and movement history directly from their WhatsApp activity.",
-    tag: "GPS",
-    color: "#FB923C",
-  },
-  {
     icon: Lock,
     title: "Zero Footprint",
     desc: "Completely undetectable. No battery drain, no notifications, no traces on the target device.",
     tag: "STEALTH",
     color: "#00FF88",
-  },
-  {
-    icon: BarChart3,
-    title: "Activity Reports",
-    desc: "Automated daily and weekly reports. Visualize usage patterns, peak hours, and behavioral trends.",
-    tag: "ANALYTICS",
-    color: "#60A5FA",
   },
 ];
 
@@ -73,15 +59,12 @@ export default function FeaturesSection() {
       className="relative overflow-hidden"
       style={{ background: "#050D1A", padding: "96px 0" }}
     >
-      {/* Background glow */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
         background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(0,255,136,0.035) 0%, transparent 60%)",
       }} />
 
       <div className="page-container" style={{ position: "relative" }}>
-
-        {/* Section header */}
         <div style={{ textAlign: "center", marginBottom: "56px" }}>
           <div className="section-label reveal" style={{ display: "inline-flex", marginBottom: "16px" }}>
             Capability Matrix
@@ -99,7 +82,6 @@ export default function FeaturesSection() {
           </p>
         </div>
 
-        {/* Featured card */}
         <div className="reveal" style={{ marginBottom: "16px" }}>
           <div style={{
             borderRadius: "20px",
@@ -110,9 +92,7 @@ export default function FeaturesSection() {
             position: "relative",
             overflow: "hidden",
           }}>
-            {/* Top accent */}
             <div style={{ position: "absolute", inset: "0 0 auto 0", height: "2px", background: "linear-gradient(90deg, transparent, #00FF88, transparent)" }} />
-
             <div style={{ display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap" }}>
               <div style={{
                 width: "52px", height: "52px", borderRadius: "16px", flexShrink: 0,
@@ -121,7 +101,6 @@ export default function FeaturesSection() {
               }}>
                 <FeaturedIcon style={{ width: "24px", height: "24px", color: "#00FF88" }} strokeWidth={1.6} />
               </div>
-
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px", flexWrap: "wrap" }}>
                   <h3 className="font-display font-black" style={{ fontSize: "22px", color: "#F1F5F9", textTransform: "uppercase", letterSpacing: "0.04em", lineHeight: 1 }}>
@@ -137,7 +116,6 @@ export default function FeaturesSection() {
                 </div>
                 <p style={{ fontSize: "13px", color: "#64748B", lineHeight: 1.6, maxWidth: "600px" }}>{featured.desc}</p>
               </div>
-
               <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
                 <span className="animate-blink" style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#00FF88", display: "inline-block" }} />
                 <span className="font-mono" style={{ fontSize: "10px", color: "#00FF88", letterSpacing: "0.15em", fontWeight: 600 }}>ACTIVE</span>
@@ -146,7 +124,6 @@ export default function FeaturesSection() {
           </div>
         </div>
 
-        {/* Feature grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px" }}
           className="features-grid">
           {rest.map((feat, i) => {
@@ -193,7 +170,7 @@ export default function FeaturesSection() {
                   <h3 className="font-display font-black" style={{ fontSize: "14px", color: "#F1F5F9", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "8px", lineHeight: 1.2 }}>
                     {feat.title}
                   </h3>
-                  <p style={{ fontSize: "12px", color: "#475569", lineHeight: 1.65 }}>{feat.desc}</p>
+                  <p style={{ fontSize: "12px", color: "#64748B", lineHeight: 1.65 }}>{feat.desc}</p>
                 </div>
               </div>
             );
