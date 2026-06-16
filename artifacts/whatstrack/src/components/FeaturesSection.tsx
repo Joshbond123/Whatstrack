@@ -5,7 +5,7 @@ const FEATURES = [
   {
     icon: MessageSquare,
     title: "Message Monitoring",
-    desc: "Read all incoming and outgoing messages in real-time. Full chat history including deleted messages.",
+    desc: "Read all incoming and outgoing messages in real-time.",
     tag: "LIVE",
     color: "#00FF88",
     featured: true,
