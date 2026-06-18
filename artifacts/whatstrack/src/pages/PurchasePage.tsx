@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Wifi, ArrowRight, Smartphone, Loader2, Shield, Lock, Zap, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Smartphone, Loader2, Shield, Lock, Zap, Check } from "lucide-react";
 
 type Device = "Android" | "iPhone (iOS)" | "";
 
@@ -59,9 +59,7 @@ export default function PurchasePage() {
       }}>
         <div className="page-container" style={{ height: "68px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <div style={{ width: "32px", height: "32px", borderRadius: "8px", background: "linear-gradient(135deg, #00FF88 0%, #00CCAA 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Wifi style={{ width: "16px", height: "16px", color: "#050D1A" }} strokeWidth={2.5} />
-            </div>
+            <img src="/logo.png" alt="WhatsTrack" style={{ width: "32px", height: "32px", borderRadius: "8px", objectFit: "cover" }} loading="eager" />
             <span className="font-display font-black" style={{ color: "#F1F5F9", letterSpacing: "0.14em", fontSize: "15px" }}>
               WHATS<span style={{ color: "#00FF88" }}>TRACK</span>
             </span>

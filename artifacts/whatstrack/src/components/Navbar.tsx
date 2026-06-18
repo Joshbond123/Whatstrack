@@ -71,6 +71,8 @@ export default function Navbar() {
               src="/logo.png"
               alt="WhatsTrack Logo"
               className="w-8 h-8 rounded-lg object-cover transition-all duration-300 group-hover:shadow-[0_0_16px_rgba(0,255,136,0.4)]"
+              loading="eager"
+              decoding="async"
             />
             <span className="font-display font-black text-white tracking-[0.14em] text-[15px] leading-none">
               WHATS<span className="text-[#00FF88]">TRACK</span>
@@ -154,7 +156,7 @@ export default function Navbar() {
             borderBottom: "1px solid rgba(255,255,255,0.06)",
           }}>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <img src="/logo.png" alt="WhatsTrack Logo" style={{ width: "28px", height: "28px", borderRadius: "8px", objectFit: "cover" }} />
+              <img src="/logo.png" alt="WhatsTrack Logo" style={{ width: "28px", height: "28px", borderRadius: "8px", objectFit: "cover" }} loading="eager" decoding="async" />
               <span className="font-display font-black text-white tracking-[0.14em] text-[13px] leading-none">
                 WHATS<span style={{ color: "#00FF88" }}>TRACK</span>
               </span>

@@ -1,7 +1,7 @@
 import { Eye, MessageSquare, Phone, Shield } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-const BG_IMAGE = "https://media.base44.com/images/public/6a2fdd6f77f22f5cf4a24501/019c82b65_generated_image.png";
+const BG_IMAGE = "/bg-hero.png";
 
 const CAPABILITY_CARDS = [
   { icon: MessageSquare, label: "Messages", value: "Full Access", sub: "All chats", color: "#00FF88" },
