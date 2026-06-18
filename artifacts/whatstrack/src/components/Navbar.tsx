@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Wifi, ChevronRight, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Features", id: "features" },
@@ -67,12 +67,11 @@ export default function Navbar() {
             className="flex items-center gap-2.5 select-none focus:outline-none group cursor-pointer"
             aria-label="WhatsTrack"
           >
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_16px_rgba(0,255,136,0.4)]"
-              style={{ background: "linear-gradient(135deg, #00FF88 0%, #00CCAA 100%)" }}
-            >
-              <Wifi className="w-4 h-4 text-[#050D1A]" strokeWidth={2.5} />
-            </div>
+            <img
+              src="/logo.png"
+              alt="WhatsTrack Logo"
+              className="w-8 h-8 rounded-lg object-cover transition-all duration-300 group-hover:shadow-[0_0_16px_rgba(0,255,136,0.4)]"
+            />
             <span className="font-display font-black text-white tracking-[0.14em] text-[15px] leading-none">
               WHATS<span className="text-[#00FF88]">TRACK</span>
             </span>
@@ -155,9 +154,7 @@ export default function Navbar() {
             borderBottom: "1px solid rgba(255,255,255,0.06)",
           }}>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <div style={{ width: "28px", height: "28px", borderRadius: "8px", background: "linear-gradient(135deg, #00FF88 0%, #00CCAA 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Wifi style={{ width: "13px", height: "13px", color: "#050D1A" }} strokeWidth={2.5} />
-              </div>
+              <img src="/logo.png" alt="WhatsTrack Logo" style={{ width: "28px", height: "28px", borderRadius: "8px", objectFit: "cover" }} />
               <span className="font-display font-black text-white tracking-[0.14em] text-[13px] leading-none">
                 WHATS<span style={{ color: "#00FF88" }}>TRACK</span>
               </span>

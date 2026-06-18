@@ -1,4 +1,4 @@
-import { Wifi, Shield } from "lucide-react";
+import { Shield } from "lucide-react";
 
 const FOOTER_LINKS = {
   Product: ["Features", "How It Works", "Pricing", "FAQ"],
@@ -27,9 +27,7 @@ export default function Footer() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px", background: "none", border: "none", cursor: "pointer" }}
             >
-              <div style={{ width: "32px", height: "32px", borderRadius: "8px", background: "linear-gradient(135deg, #00FF88 0%, #00CCAA 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Wifi style={{ width: "15px", height: "15px", color: "#030912" }} strokeWidth={2.5} />
-              </div>
+              <img src="/logo.png" alt="WhatsTrack Logo" style={{ width: "32px", height: "32px", borderRadius: "8px", objectFit: "cover" }} />
               <span className="font-display font-black" style={{ color: "#F1F5F9", letterSpacing: "0.14em", fontSize: "15px" }}>
                 WHATS<span style={{ color: "#00FF88" }}>TRACK</span>
               </span>
